@@ -27,14 +27,16 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ShowMissingFiles extends AbstractFormElement
 {
+     protected LanguageService $languageService;
+
     /**
      * Container objects give $nodeFactory down to other containers.
      *
-     * @param LanguageService|null $languageService
      * @throws \InvalidArgumentException
      */
-    public function __construct(protected readonly LanguageService $languageService)
+    public function __construct()
     {
+        $this->languageService = $GLOBALS['LANG'];
     }
 
     /**

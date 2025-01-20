@@ -26,16 +26,16 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ShowDeleteFiles extends AbstractFormElement
 {
+    protected FileRepository $fileRepository;
+
+    protected LanguageService $languageService;
+
     /**
      * Container objects give $nodeFactory down to other containers.
-     *
-     * @param FileRepository $fileRepository
-     * @param LanguageService $languageService
      */
-    public function __construct(
-        protected readonly FileRepository $fileRepository,
-        protected readonly LanguageService $languageService
-    ) {
+    public function __construct() {
+        $this->fileRepository = GeneralUtility::makeInstance(FileRepository::class);
+        $this->languageService = $GLOBALS['LANG'];
     }
 
     /**
